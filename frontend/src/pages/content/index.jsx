@@ -1,0 +1,11 @@
+export { default as DashboardContent } from './DashboardContent';
+export { default as LevelsContent } from './LevelsContent';
+export { default as PeriodsContent } from './PeriodsContent';
+export { default as GradesContent } from './GradesContent';
+export { default as SectionsContent } from './SectionsContent';
+export { default as SubjectsContent } from './SubjectsContent';
+export { default as PersonsContent } from './PersonsContent';
+export { default as StudentsContent } from './StudentsContent';
+export { default as EnrollmentsContent } from './EnrollmentsContent';
+export { default as AttendanceContent } from './AttendanceContent';
+// export { default as ReportsContent } from './ReportsContent';

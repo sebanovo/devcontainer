@@ -1,0 +1,7 @@
+# IDE/OS
+.vscode/
+.idea/
+.DS_Store
+
+# Archivos de entorno
+.env

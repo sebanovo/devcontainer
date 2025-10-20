@@ -1,0 +1,40 @@
+.cargar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 50px;
+  font-family: 'Segoe UI', sans-serif;
+  color: #333;
+}
+
+.cargar h1 {
+  margin-bottom: 20px;
+}
+
+.cargar form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cargar label {
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+/* Nueva clase específica para input */
+.fileInput {
+  padding: 10px 15px;
+  border: 2px solid #4caf50;
+  border-radius: 8px;
+  background-color: #f0fff0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.fileInput:hover {
+  border-color: #45a049;
+  background-color: #e6ffe6;
+}
