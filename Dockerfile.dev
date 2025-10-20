@@ -5,9 +5,8 @@ RUN apt-get update && apt-get install -y \
   curl \
   ca-certificates \
   bash \
-  build-essential
-  # build-essential \
-  # git
+  build-essential \
+  git
 
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - 
 RUN apt-get install -y nodejs
@@ -23,7 +22,7 @@ COPY starship.toml /home/vscode/.config/starship.toml
 
 COPY starship.toml /root/.config/starship.toml
 
-RUN echo 'eval "$(starship init bash)"' >> root/.bashrc/
+RUN echo 'eval "$(starship init bash)"' >> root/.bashrc
 
 SHELL ["/bin/bash", "-c"]
 
