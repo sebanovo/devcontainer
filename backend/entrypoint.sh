@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#! /usr/bin/env sh
 set -e
 
 echo "Esperando a PostgreSQL en $POSTGRES_HOST:$POSTGRES_PORT..."
