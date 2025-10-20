@@ -1,11 +1,12 @@
 services:
-  app:
+  dev-container:
     build:
       context: .
-      dockerfile: ./Dockerfile 
+      dockerfile: ./Dockerfile.dev
     volumes: 
       - .:/workspaces:cached
     command: sleep infinity
+    
     ports:
       - "5173:5173"
       - "8000:8000"
@@ -22,7 +23,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD} 
     ports:
-      - "55432:5432"
+      - "5432:5432"
      
 volumes: 
   postgres-data:

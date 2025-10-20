@@ -1,6 +1,6 @@
 {
-	"name": "Ubuntu",
-	"dockerComposeFile": "../docker-compose.yml",
-	"service": "app",
+	"name": "Colegio App",
+	"dockerComposeFile": "../docker-compose.dev.yml",
+	"service": "dev-container",
 	"workspaceFolder": "/workspaces"
 }
