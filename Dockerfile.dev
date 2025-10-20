@@ -6,9 +6,7 @@ RUN apt-get update && apt-get install -y \
   ca-certificates \
   bash \
   build-essential \
-  git \
-  wget \
-  fontconfig
+  git 
 
 RUN curl -sL https://deb.nodesource.com/setup_20.x | bash - 
 RUN apt-get install -y nodejs
@@ -18,23 +16,15 @@ RUN python3 --version && pip3 --version && node --version && npm --version
 # Instalar starship
 RUN curl -sS https://starship.rs/install.sh | sh -s -- -y
 
-# Instalar Nerd Fonts (FiraCode Nerd Font)
-RUN cd /tmp && \
-    wget -q https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/FiraCode.tar.xz && \
-    mkdir -p /usr/share/fonts/truetype/firacode-nerd && \
-    tar -xf FiraCode.tar.xz -C /usr/share/fonts/truetype/firacode-nerd/ --strip-components=1 && \
-    fc-cache -f -v && \
-    rm FiraCode.tar.xz
-
 RUN mkdir -p /root/.config && chown -R root:root /root/.config
 
 COPY starship.toml /home/vscode/.config/starship.toml
 
 COPY starship.toml /root/.config/starship.toml
 
-# CORREGIR: ruta correcta
 RUN echo 'eval "$(starship init bash)"' >> /root/.bashrc
 
+# Iniciar en Bash
 SHELL ["/bin/bash", "-c"]
 
 CMD  ["bash"]
