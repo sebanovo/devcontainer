@@ -5,3 +5,5 @@
 
 # Archivos de entorno
 .env
+
+*/media/**/*

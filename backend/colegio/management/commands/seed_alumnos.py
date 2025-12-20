@@ -3,7 +3,7 @@ from django_seed import Seed
 import random
 from colegio.models import Alumno
 
-
+# este comando incompleto pues alumno tiene imagenes
 class Command(BaseCommand):
     help = "Genera alumnos de prueba"
 
