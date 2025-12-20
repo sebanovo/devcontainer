@@ -5,8 +5,8 @@ services:
       dockerfile: ./Dockerfile.dev
     volumes: 
       - .:/workspaces:cached
-    command: sleep infinity
-    
+    command: "sleep infinity"
+
     ports:
       - "5173:5173"
       - "8000:8000"

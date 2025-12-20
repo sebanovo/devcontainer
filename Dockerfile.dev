@@ -24,6 +24,12 @@ COPY starship.toml /root/.config/starship.toml
 
 RUN echo 'eval "$(starship init bash)"' >> /root/.bashrc
 
+# COPY entrypoint.sh /entrypoint.sh
+
+# RUN chmod +x /entrypoint.sh
+
+# ENTRYPOINT ["/entrypoint.sh"]
+
 # Iniciar en Bash
 SHELL ["/bin/bash", "-c"]
 

@@ -3,6 +3,7 @@
 	"dockerComposeFile": "../docker-compose.dev.yml",
 	"service": "dev-container",
 	"workspaceFolder": "/workspaces",
+	"postAttachCommand": "chmod +x ./entrypoint.sh && /bin/bash -lc ./entrypoint.sh",
 	"customizations": {
 		"vscode": {
 			"extensions": [
