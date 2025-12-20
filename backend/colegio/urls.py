@@ -4,8 +4,8 @@ from rest_framework import routers
 from .views import AlumnoViewSet
 
 router = routers.DefaultRouter()
-router.register(r'alumnos', AlumnoViewSet)
+router.register(r"alumnos", AlumnoViewSet)
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("", include(router.urls)),
 ]
