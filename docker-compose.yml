@@ -24,7 +24,7 @@ services:
     build: ./backend                    # Construye con Dockerfile de backend/
     container_name: fs_backend          # Nombre del contenedor
     env_file: .env                      # Carga variables de entorno
-    user: "${UID:-1000}:${GID:-1000}"   # En linux/WSL evita archivos creados como root
+    user: "${UID:-1000}:${GID:-1000}"   # En linux/WSL evita archivos creados como root (permite editar y borrar archivos)
     command: /bin/sh -lc "./entrypoint.sh"
     volumes:
       - ./backend:/app                  # Hot-reload: tu código ↔ contenedor
