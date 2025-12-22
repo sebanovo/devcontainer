@@ -2,13 +2,13 @@
 
 set -e
 
-if [ -f .env ]
-then
-  source .env || true
-  echo "Archivo .env cargado con exito"
-else
+if [ ! -f .env ]; then
   echo "Error: .env file not found!"
+  exit 1
 fi
+
+source .env 
+echo "Archivo .env cargado con éxito"
 
 cd backend
 
