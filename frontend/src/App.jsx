@@ -6,9 +6,9 @@ function App() {
 
   useEffect(() => {
     fetch('/api/v1/alumnos/')
-      .then(response => response.json())
-      .then(data => setAlumnos(data))
-      .catch(error => console.error('Error al cargar alumnos:', error));
+      .then((response) => response.json())
+      .then((data) => setAlumnos(data))
+      .catch((error) => console.error('Error al cargar alumnos:', error));
   }, []);
 
   return (
@@ -20,11 +20,11 @@ function App() {
             <li key={alumno.id}>
               {alumno.nombre} - {alumno.edad} años
             </li>
-            <img width="100" src={ alumno.foto } alt={`foto de ${alumno.nombre}`} />
+            <img width='100' src={alumno.foto} alt={`foto de ${alumno.nombre}`} />
           </div>
         ))}
-        <img width="100" src="static/mark.jpg" alt="foto de mark" />
-        <img width="100" src="media/alumnos/mark.jpg" alt="foto de mark" />
+        <img width='100' src='static/mark.jpg' alt='foto de mark' />
+        <img width='100' src='media/alumnos/mark.jpg' alt='foto de mark' />
       </ul>
     </>
   );

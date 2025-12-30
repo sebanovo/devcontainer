@@ -1,12 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 // export default defineConfig({
 //   plugins: [react()],
 // })
 
-const BACKEND_URL = "http://localhost:8000"
+const BACKEND_URL = 'http://localhost:8000';
 
 export default defineConfig({
   plugins: [react()],

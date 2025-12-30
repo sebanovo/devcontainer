@@ -9,5 +9,4 @@
   "endOfLine": "lf",
   "arrowParens": "always",
   "plugins": ["prettier-plugin-tailwindcss"]
-  
 }
