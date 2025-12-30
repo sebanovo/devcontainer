@@ -5,11 +5,6 @@ __pycache__/
 *.pyd
 *.sqlite3
 
-# IDE/OS
-.vscode/
-.idea/
-.DS_Store
-
 # Entornos y secretos
 .venv/
 venv/
