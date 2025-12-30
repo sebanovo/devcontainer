@@ -8,4 +8,5 @@ router.register(r"alumnos", AlumnoViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
+    path("tenant/", include("tenant.urls")),
 ]
