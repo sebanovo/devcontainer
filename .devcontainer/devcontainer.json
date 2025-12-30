@@ -2,6 +2,7 @@
 	"name": "Colegio App",
 	"dockerComposeFile": "../docker-compose.dev.yml",
 	"service": "dev-container",
+	"initializeCommand": "docker compose -f ./docker-compose.dev.yml down -v",
 	"workspaceFolder": "/workspaces",
 	"postAttachCommand": "chmod +x ./entrypoint.sh && /bin/bash -lc ./entrypoint.sh",
 	"customizations": {

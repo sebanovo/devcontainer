@@ -1,9 +1,25 @@
+# Django
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.sqlite3
+
 # IDE/OS
 .vscode/
 .idea/
 .DS_Store
 
-# Archivos de entorno
+# Entornos y secretos
+.venv/
+venv/
 .env
+*.env
 
+# Archivos de entorno
 */media/**/*
+
+# Node/React
+node_modules/
+build/
+dist/
