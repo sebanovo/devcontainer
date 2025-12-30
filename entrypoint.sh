@@ -12,7 +12,7 @@ echo "Archivo .env cargado con éxito"
 
 cd backend
 
-echo "Instalar Dependencias..."
+echo "Instalar Dependencias...(backend)"
 pip install --no-cache-dir -r ./requirements.txt
 
 echo "Esperando a PostgreSQL en $POSTGRES_HOST:$POSTGRES_PORT..."
@@ -49,3 +49,6 @@ export DJANGO_SUPERUSER_PASSWORD
 python manage.py createsuperuser --noinput
 
 
+cd ../frontend
+echo "Instalar Dependencias...(frontend)"
+npm install
