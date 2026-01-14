@@ -1,33 +1,43 @@
-import { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import { getApp } from './helpers';
 
-function App() {
-  const [alumnos, setAlumnos] = useState([]);
+function AppHome() {
+  return <h1>Hola App</h1>;
+}
+function AdminHome() {
+  return <h1>Hola Admin</h1>;
+}
 
-  useEffect(() => {
-    fetch('/api/v1/alumnos/')
-      .then((response) => response.json())
-      .then((data) => setAlumnos(data))
-      .catch((error) => console.error('Error al cargar alumnos:', error));
-  }, []);
-
+export function AppRouter() {
   return (
-    <>
-      <h1>Lista de Alumnos</h1>
-      <ul>
-        {alumnos.map((alumno, i) => (
-          <div key={i}>
-            <li key={alumno.id}>
-              {alumno.nombre} - {alumno.edad} años
-            </li>
-            <img width='100' src={alumno.foto} alt={`foto de ${alumno.nombre}`} />
-          </div>
-        ))}
-        <img width='100' src='static/mark.jpg' alt='foto de mark' />
-        <img width='100' src='media/alumnos/mark.jpg' alt='foto de mark' />
-      </ul>
-    </>
+    <Routes>
+      <Route path='/' element={<AppHome />}></Route>
+    </Routes>
+  );
+}
+
+export function AdminRouter() {
+  return (
+    <Routes>
+      <Route path='/' element={<AdminHome />}></Route>
+    </Routes>
+  );
+}
+function App() {
+  const CurrentApp = getApp();
+  console.log({ app: CurrentApp });
+  return (
+    <BrowserRouter>
+      <CurrentApp />
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+/*
+DNS comodin 
+
+Configurar DNS wildcard.
+*/
