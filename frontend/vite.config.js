@@ -16,6 +16,7 @@ export default defineConfig({
     watch: {
       usePolling: true,
     },
+    allowedHosts: ['.nip.io', '.sslip.io'],
     proxy: {
       '/api': {
         target: BACKEND_URL,
@@ -35,3 +36,4 @@ export default defineConfig({
     },
   },
 });
+// http://admin.18.188.44.65.nip.io:5173/ mi servidor
