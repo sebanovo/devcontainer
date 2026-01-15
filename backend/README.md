@@ -7,7 +7,9 @@ python manage.py migrate
 
 python manage.py createsuperuser
 
-python manage.py shell < code_python.py # para correr python scripts 
+python manage.py shell < code_python.py # para correr python scripts
+
+python manage.py reset_db # Elimina las tablas de la base de datos
 
 python manage.py flush # Borrar los registros pero no las tablas
 
@@ -23,7 +25,7 @@ python manage.py create_tenant_superuser --username=colegio --email=colegio@gmai
 # para eliminar un tenant
 python manage.py delete_tenant --schema=simon_pedro_ii
 
-# para clonar un tennant 
+# para clonar un tennant
 python manage.py clone_tenant --clone_from=simon_pedro_ii --name=simon_pedro_iii
 
 # para renombrar un tennant

@@ -10,19 +10,16 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/6.0/ref/settings/
 """
 
+from .env import Env
 from pathlib import Path
-import environ
 
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-env = environ.Env(DEBUG=(bool, True))
-environ.Env.read_env(BASE_DIR.parent / ".env")
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env("SECRET_KEY")
+SECRET_KEY = Env.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -45,7 +42,12 @@ SHARED_APPS = [
     "django_seed",
 ]
 
-TENANT_APPS = ["tenant"]
+TENANT_APPS = [
+    "tenant",  # app de tenants
+    "django.contrib.auth",  # usuarios y permisos por tenant
+    "django.contrib.admin",  # admin por tenant
+    "django.contrib.sessions",  # sesiones por tenant
+]
 
 INSTALLED_APPS = list(SHARED_APPS) + [
     app for app in TENANT_APPS if app not in SHARED_APPS
@@ -94,11 +96,11 @@ DATABASES = {
     "default": {
         # "ENGINE": "django.db.backends.postgresql",
         "ENGINE": "django_tenants.postgresql_backend",
-        "NAME": env("POSTGRES_DB"),
-        "USER": env("POSTGRES_USER"),
-        "PASSWORD": env("POSTGRES_PASSWORD"),
-        "HOST": env("POSTGRES_HOST"),
-        "PORT": env("POSTGRES_PORT"),
+        "NAME": Env.POSTGRES_DB,
+        "USER": Env.POSTGRES_USER,
+        "PASSWORD": Env.POSTGRES_PASSWORD,
+        "HOST": Env.POSTGRES_HOST,
+        "PORT": Env.POSTGRES_PORT,
     }
 }
 

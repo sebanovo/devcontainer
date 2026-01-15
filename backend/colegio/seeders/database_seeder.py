@@ -4,6 +4,7 @@ from .plan_seeder import PlanSeeder
 from .subscription_seeder import SubscriptionSeeder
 from .invoice_seeder import InvoiceSeeder
 from .alumno_seeder import AlumnoSeeder
+from .user_seeder import UserSeeder
 
 
 class DatabaseSeeder:
@@ -12,10 +13,11 @@ class DatabaseSeeder:
         seeders = [
             ClientSeeder,
             DomainSeeder,
-            PlanSeeder,
-            SubscriptionSeeder,
-            InvoiceSeeder,
-            AlumnoSeeder,
+            # PlanSeeder,
+            # SubscriptionSeeder,
+            # InvoiceSeeder,
+            UserSeeder,
+            # AlumnoSeeder,
         ]
 
         for seeder in seeders:
