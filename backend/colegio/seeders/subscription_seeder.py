@@ -48,5 +48,6 @@ class SubscriptionSeeder:
                 end_date=date.today() + timedelta(days=30),
                 active=True,
             )
-        except:
-            print("Hubo problema en el seeder de subscription")
+
+        except Exception as e:
+            raise e

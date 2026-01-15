@@ -7,5 +7,10 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
         self.stdout.write(self.style.WARNING("🚀 Iniciando seeding..."))
-        DatabaseSeeder.run()
-        self.stdout.write(self.style.SUCCESS("✅ Seeding completado."))
+
+        try:
+            DatabaseSeeder.run(self.stdout, self.style)
+
+            self.stdout.write(self.style.SUCCESS("✅ Seeding completado."))
+        except Exception as e:
+            self.stout.write(self.style.ERROR(f"❌Error: {e}"))

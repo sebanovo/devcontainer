@@ -28,8 +28,6 @@ python manage.py makemigrations || true
 echo "Ejecutando las migraciones (solamente del esquema compartido)..."
 python manage.py migrate_schemas --shared || true
 
-echo "Ejecutando seeders"
-python manage.py seed
 
 # echo "Creando el Esquema principal..."
 # python manage.py create_tenant \

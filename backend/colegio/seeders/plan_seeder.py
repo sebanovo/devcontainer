@@ -35,5 +35,6 @@ class PlanSeeder:
                 max_teachers=50,
                 max_storage_mb=2000,
             )
-        except:
-            print("Hubo problema en el seeder de plan")
+
+        except Exception as e:
+            raise e

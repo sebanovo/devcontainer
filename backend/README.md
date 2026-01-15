@@ -30,4 +30,8 @@ python manage.py clone_tenant --clone_from=simon_pedro_ii --name=simon_pedro_iii
 
 # para renombrar un tennant
 python manage.py rename_schema --rename_from old_name --rename_to new_name
+
+
+### COMANDOS PERSONALIZADOS
+python manage.py seed
 ```

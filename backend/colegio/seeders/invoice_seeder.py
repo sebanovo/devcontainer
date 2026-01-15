@@ -25,5 +25,5 @@ class InvoiceSeeder:
                 id=4, client=client5, amount=200, issued_on=date.today(), paid=False
             )
 
-        except:
-            print("Hubo problema en el seeder de invoice")
+        except Exception as e:
+            raise e

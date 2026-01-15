@@ -46,5 +46,5 @@ class DomainSeeder:
                 tenant=client5,
                 is_primary=True,
             )
-        except:
-            print("Hubo problema en el seeder de domain")
+        except Exception as e:
+            raise e

@@ -9,7 +9,7 @@ from .user_seeder import UserSeeder
 
 class DatabaseSeeder:
     @staticmethod
-    def run():
+    def run(stdout, style):
         seeders = [
             ClientSeeder,
             DomainSeeder,
@@ -20,7 +20,10 @@ class DatabaseSeeder:
             AlumnoSeeder,
         ]
 
-        for seeder in seeders:
-            print(f"Seeding {seeder.__name__}...")
-            seeder.run()
-        print("✅ Database seeding completed.")
+        try:
+            for seeder in seeders:
+                stdout.write(style.WARNING(f"Seeding {seeder.__name__}..."))
+                seeder.run()
+                stdout.write(style.SUCCESS("Seeding completado."))
+        except Exception as e:
+            raise e

@@ -10,5 +10,6 @@ class AlumnoSeeder:
             Alumno.objects.create(id=2, nombre="Lucas Matias Flores", edad=21)
             Alumno.objects.create(id=3, nombre="Mariana Morales Jimenez", edad=21)
             Alumno.objects.create(id=4, nombre="Gabriela Gonzales Mamani", edad=21)
-        except:
-            print("Hubo problema en el seeder de alumno")
+
+        except Exception as e:
+            raise e

@@ -46,5 +46,5 @@ class ClientSeeder:
                 paid_until=date.today() + timedelta(days=15),
                 on_trial=False,
             )
-        except:
-            print("Hubo problema en el seeder de client")
+        except Exception as e:
+            raise e

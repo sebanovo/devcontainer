@@ -12,7 +12,9 @@ class UserSeeder:
                     username=username, email=email, password=password
                 )
             else:
-                print(f"️Superusuario {username} ya existe en tenant {schema_name}")
+                raise Exception(
+                    f"️Superusuario {username} ya existe en tenant {schema_name}"
+                )
 
     @staticmethod
     def run():
@@ -44,5 +46,6 @@ class UserSeeder:
                 "britanicosantacruz@gmail.com",
                 "password",
             )
-        except:
-            print("Hubo problema en el seeder de user")
+
+        except Exception as e:
+            raise e
