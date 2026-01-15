@@ -145,7 +145,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # CORS_ALLOWED_ORIGINS = ["https://example.com"]
-CORS_ALLOWED_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = True
 
 # Cambiando el host a 0.0.0.0 para poder acceder desde afuera del contenedor
 from django.core.management.commands.runserver import Command as runserver
