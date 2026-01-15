@@ -7,6 +7,14 @@ class DomainSeeder:
     @staticmethod
     def run():
         try:
+            client1 = Client.objects.get(id=1)
+            Domain.objects.create(
+                id=1,
+                domain=Env.MAIN_SCHEMA_DOMAIN_DOMAIN,
+                tenant=client1,
+                is_primary=True,
+            )
+
             client2 = Client.objects.get(id=2)
             Domain.objects.create(
                 id=2,

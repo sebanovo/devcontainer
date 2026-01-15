@@ -33,10 +33,10 @@ SHARED_APPS = [
     "colegio",
     "django.contrib.admin",
     "django.contrib.auth",
-    "django.contrib.contenttypes",
-    "django.contrib.sessions",
-    "django.contrib.messages",
-    "django.contrib.staticfiles",
+    "django.contrib.contenttypes",  # permite relacion de tablas por GenericForeignKey
+    "django.contrib.sessions",  # sesion de usuarios (cookies)
+    "django.contrib.messages",  # mensajes temporales “Usuario creado correctamente” después de un POST.
+    "django.contrib.staticfiles",  # Gestionar archivos estaticos
     "corsheaders",
     "rest_framework",
     "django_seed",

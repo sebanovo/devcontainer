@@ -13,11 +13,11 @@ class DatabaseSeeder:
         seeders = [
             ClientSeeder,
             DomainSeeder,
-            # PlanSeeder,
-            # SubscriptionSeeder,
-            # InvoiceSeeder,
+            PlanSeeder,
+            SubscriptionSeeder,
+            InvoiceSeeder,
             UserSeeder,
-            # AlumnoSeeder,
+            AlumnoSeeder,
         ]
 
         for seeder in seeders:

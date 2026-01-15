@@ -1,5 +1,6 @@
 from django.contrib.auth.models import User
 from django_tenants.utils import schema_context
+from config.env import Env
 
 
 class UserSeeder:
@@ -16,6 +17,12 @@ class UserSeeder:
     @staticmethod
     def run():
         try:
+            UserSeeder.create_tenant_superuser(
+                "public",
+                Env.DJANGO_SUPERUSER_USERNAME,
+                Env.DJANGO_SUPERUSER_EMAIL,
+                Env.DJANGO_SUPERUSER_PASSWORD,
+            )
             UserSeeder.create_tenant_superuser(
                 "aleman", "aleman", "aleman@gmail.com", "password"
             )
