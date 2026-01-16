@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from ...seeders.database_seeder import DatabaseSeeder
+from colegio.seeders.database_seeder import DatabaseSeeder
 
 
 class Command(BaseCommand):
@@ -13,4 +13,4 @@ class Command(BaseCommand):
 
             self.stdout.write(self.style.SUCCESS("✅ Seeding completado."))
         except Exception as e:
-            self.stout.write(self.style.ERROR(f"❌Error: {e}"))
+            self.stdout.write(self.style.ERROR(f"❌Error: {e}"))

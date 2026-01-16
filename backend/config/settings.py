@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = Env.SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = Env.DEBUG
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = Env.ALLOWED_HOSTS  # ["*"]
 
 
 # Application definition
@@ -39,7 +39,6 @@ SHARED_APPS = [
     "django.contrib.staticfiles",  # Gestionar archivos estaticos
     "corsheaders",
     "rest_framework",
-    "django_seed",
     "django_extensions",
 ]
 
@@ -50,9 +49,11 @@ TENANT_APPS = [
     "django.contrib.sessions",  # sesiones por tenant
 ]
 
-INSTALLED_APPS = list(SHARED_APPS) + [
-    app for app in TENANT_APPS if app not in SHARED_APPS
-]
+INSTALLED_APPS = (
+    list(SHARED_APPS)
+    + [app for app in TENANT_APPS if app not in SHARED_APPS]
+    + ["core"]
+)
 
 TENANT_MODEL = "colegio.Client"
 
@@ -148,7 +149,7 @@ MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media"
 
 # CORS_ALLOWED_ORIGINS = ["https://example.com"]
-CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_ALL_ORIGINS = Env.CORS_ALLOW_ALL_ORIGINS
 
 # Cambiando el host a 0.0.0.0 para poder acceder desde afuera del contenedor
 from django.core.management.commands.runserver import Command as runserver
