@@ -40,6 +40,7 @@ SHARED_APPS = [
     "corsheaders",
     "rest_framework",
     "django_seed",
+    "django_extensions",
 ]
 
 TENANT_APPS = [

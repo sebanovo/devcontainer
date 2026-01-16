@@ -34,4 +34,13 @@ python manage.py rename_schema --rename_from old_name --rename_to new_name
 
 ### COMANDOS PERSONALIZADOS
 python manage.py seed
+
+
+### flujo para borrar y reconstruir la base de datos
+## !importante¡ antes desconectarse de la base de datos osea desconectar -> (Dbeaver)
+python manage.py reset_db
+
+python manage.py migrate_schemas --shared
+
+python manage.py seed
 ```
