@@ -1,5 +1,6 @@
 from django.core.management.base import BaseCommand
-from colegio.seeders.database_seeder import DatabaseSeeder
+from colegio.seeders.database_seeder import DatabaseSeeder as PublicDatabaseSeeder
+from tenant.seeders.database_seeder import DatabaseSeeder as TenantDatabaseSeeder
 
 
 class Command(BaseCommand):
@@ -9,8 +10,17 @@ class Command(BaseCommand):
         self.stdout.write(self.style.WARNING("🚀 Iniciando seeding..."))
 
         try:
-            DatabaseSeeder.run(self.stdout, self.style)
+            PublicDatabaseSeeder.run(self.stdout, self.style)
 
             self.stdout.write(self.style.SUCCESS("✅ Seeding completado."))
+        except Exception as e:
+            self.stdout.write(self.style.ERROR(f"❌Error: {e}"))
+
+        self.stdout.write(self.style.WARNING("🚀 Iniciando seeding en Tenants..."))
+
+        try:
+            TenantDatabaseSeeder.run(self.stdout, self.style)
+
+            self.stdout.write(self.style.SUCCESS("✅ Seeding completado en Tenants."))
         except Exception as e:
             self.stdout.write(self.style.ERROR(f"❌Error: {e}"))
