@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 
 from .env import Env
 from pathlib import Path
+from datetime import timedelta
+from django.core.management.commands.runserver import Command as runserver
+
+# Cambiando el host a 0.0.0.0 para poder acceder desde afuera del contenedor
+runserver.default_addr = "0.0.0.0"
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -134,9 +139,19 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 REST_FRAMEWORK = {
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
     "DEFAULT_AUTHENTICATION_CLASSES": (
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+    ),
+}
+
+
+SIMPLE_JWT = {
+    "ACCESS_TOKEN_LIFETIME": timedelta(minutes=60),
+    "REFRESH_TOKEN_LIFETIME": timedelta(days=7),
+    "ROTATE_REFRESH_TOKENS": False,
+    "BLACKLIST_AFTER_ROTATION": False,
+    "UPDATE_LAST_LOGIN": False,
 }
 
 
@@ -164,7 +179,36 @@ MEDIA_ROOT = BASE_DIR / "media"
 # CORS_ALLOWED_ORIGINS = ["https://example.com"]
 CORS_ALLOW_ALL_ORIGINS = Env.CORS_ALLOW_ALL_ORIGINS
 
-# Cambiando el host a 0.0.0.0 para poder acceder desde afuera del contenedor
-from django.core.management.commands.runserver import Command as runserver
-
-runserver.default_addr = "0.0.0.0"
+SPECTACULAR_SETTINGS = {
+    "TITLE": "Colegio API",
+    "DESCRIPTION": "Sistema SaaS para colegios",
+    "VERSION": "1.0.0",
+    "SERVE_INCLUDE_SCHEMA": False,
+    "APPEND_COMPONENTS": {
+        "securitySchemes": {
+            "jwtAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT",
+            },
+        },
+    },
+    "SECURITY": [{"jwtAuth": []}],
+    "COMPONENT_SPLIT_REQUEST": True,
+    "SCHEMA_PATH_PREFIX": r"/api/",
+    "SWAGGER_UI_SETTINGS": {
+        "deepLinking": True,
+        "persistAuthorization": True,
+        "displayOperationId": True,
+        "filter": True,
+    },
+    "SWAGGER_UI_FAVICON_HREF": STATIC_URL + "mark.jpg",  # default is swagger favicon
+    "CONTACT": {
+        "name": "messi",
+        "email": "email@gmai.com",
+    },
+    "LICENSE": {
+        "name": "BSD LICENCE",
+    },
+    "TERMS_OF_SERVICE": "https://www.google.com/policies/terms/",
+}
