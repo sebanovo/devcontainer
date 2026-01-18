@@ -29,7 +29,6 @@ ALLOWED_HOSTS = Env.ALLOWED_HOSTS  # ["*"]
 
 # Application definition
 SHARED_APPS = [
-    "django_tenants",
     "colegio",
     "django.contrib.admin",
     "django.contrib.auth",
@@ -37,9 +36,6 @@ SHARED_APPS = [
     "django.contrib.sessions",  # sesion de usuarios (cookies)
     "django.contrib.messages",  # mensajes temporales “Usuario creado correctamente” después de un POST.
     "django.contrib.staticfiles",  # Gestionar archivos estaticos
-    "corsheaders",
-    "rest_framework",
-    "django_extensions",
 ]
 
 TENANT_APPS = [
@@ -49,10 +45,21 @@ TENANT_APPS = [
     "django.contrib.sessions",  # sesiones por tenant
 ]
 
+THIRD_APPS = [
+    "django_tenants",
+    "corsheaders",
+    "rest_framework",
+    "django_extensions",
+    "drf_spectacular",
+]
+
+COMODIN_APPS = ["core"]
+
 INSTALLED_APPS = (
     list(SHARED_APPS)
     + [app for app in TENANT_APPS if app not in SHARED_APPS]
-    + ["core"]
+    + list(THIRD_APPS)
+    + list(COMODIN_APPS)
 )
 
 TENANT_MODEL = "colegio.Client"
