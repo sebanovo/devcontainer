@@ -12,17 +12,17 @@ class InvoiceSeeder:
             client4 = Client.objects.get(id=4)
             client5 = Client.objects.get(id=5)
             Invoice.objects.create(
-                id=1, client=client2, amount=50, issued_on=date.today(), paid=True
+                client=client2, amount=50, issued_on=date.today(), paid=True
             )
 
             Invoice.objects.create(
-                id=2, client=client3, amount=50, issued_on=date.today(), paid=False
+                client=client3, amount=50, issued_on=date.today(), paid=False
             )
             Invoice.objects.create(
-                id=3, client=client4, amount=100, issued_on=date.today(), paid=False
+                client=client4, amount=100, issued_on=date.today(), paid=False
             )
             Invoice.objects.create(
-                id=4, client=client5, amount=200, issued_on=date.today(), paid=False
+                client=client5, amount=200, issued_on=date.today(), paid=False
             )
 
         except Exception as e:

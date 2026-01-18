@@ -7,8 +7,8 @@ class ClientSeeder:
     @staticmethod
     def run():
         try:
+            # tenant public
             Client.objects.create(
-                id=1,
                 name=Env.MAIN_SCHEMA_NAME,
                 schema_name=Env.MAIN_SCHEMA_DOMAIN,
                 paid_until=Env.MAIN_SCHEMA_PAID_UNTIL,
@@ -16,7 +16,6 @@ class ClientSeeder:
             )
 
             Client.objects.create(
-                id=2,
                 name="Alemán",
                 schema_name="aleman",
                 paid_until=date.today() + timedelta(days=15),
@@ -24,7 +23,6 @@ class ClientSeeder:
             )
 
             Client.objects.create(
-                id=3,
                 name="Espíritu Santo",
                 schema_name="espiritu-santo",
                 paid_until=date.today() + timedelta(days=15),
@@ -32,7 +30,6 @@ class ClientSeeder:
             )
 
             Client.objects.create(
-                id=4,
                 name="Boliviano Americano",
                 schema_name="boliviano-americano",
                 paid_until=date.today() + timedelta(days=15),
@@ -40,7 +37,6 @@ class ClientSeeder:
             )
 
             Client.objects.create(
-                id=5,
                 name="Brítanico Santa Cruz",
                 schema_name="britanico-santa-cruz",
                 paid_until=date.today() + timedelta(days=15),

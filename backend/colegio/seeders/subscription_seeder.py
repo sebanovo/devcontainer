@@ -15,7 +15,6 @@ class SubscriptionSeeder:
             client5 = Client.objects.get(id=5)
 
             Subscription.objects.create(
-                id=1,
                 client=client2,
                 plan=plan1,
                 start_date=date.today(),
@@ -24,7 +23,6 @@ class SubscriptionSeeder:
             )
 
             Subscription.objects.create(
-                id=2,
                 client=client3,
                 plan=plan1,
                 start_date=date.today(),
@@ -33,7 +31,6 @@ class SubscriptionSeeder:
             )
 
             Subscription.objects.create(
-                id=3,
                 client=client4,
                 plan=plan2,
                 start_date=date.today(),
@@ -41,7 +38,6 @@ class SubscriptionSeeder:
                 active=True,
             )
             Subscription.objects.create(
-                id=4,
                 client=client5,
                 plan=plan3,
                 start_date=date.today(),

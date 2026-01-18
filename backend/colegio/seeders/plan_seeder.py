@@ -6,7 +6,6 @@ class PlanSeeder:
     def run():
         try:
             Plan.objects.create(
-                id=1,
                 name="Básico",
                 description="Hasta 100 alumnos",
                 price=50,
@@ -16,7 +15,6 @@ class PlanSeeder:
             )
 
             Plan.objects.create(
-                id=2,
                 name="Estándar",
                 description="Hasta 500 alumnos",
                 price=100,
@@ -26,7 +24,6 @@ class PlanSeeder:
             )
 
             Plan.objects.create(
-                id=3,
                 name="Premium",
                 description="Hasta 1000 alumnos",
                 price=200,
