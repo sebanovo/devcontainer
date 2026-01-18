@@ -1,20 +1,20 @@
 {
-	"name": "Colegio App",
-	"dockerComposeFile": "../docker-compose.dev.yml",
-	"service": "dev-container",
-	"initializeCommand": "docker compose -f ./docker-compose.dev.yml down -v",
-	"workspaceFolder": "/workspaces",
-	"postAttachCommand": "chmod +x ./entrypoint.sh && /bin/bash -lc ./entrypoint.sh",
-	"customizations": {
-		"vscode": {
-			"extensions": [
-				"ms-python.python",
-				"ms-python.black-formatter",
-				"batisteo.vscode-django",
-				"esbenp.prettier-vscode",
-				"dbaeumer.vscode-eslint",
-				"bradlc.vscode-tailwindcss"
-			]
-		}
-	}
+  "name": "Colegio App",
+  "dockerComposeFile": "../docker-compose.dev.yml",
+  "service": "dev-container",
+  "initializeCommand": "docker compose -f ./docker-compose.dev.yml down -v",
+  "workspaceFolder": "/workspaces",
+  "postAttachCommand": "chmod +x ./entrypoint.dev.sh && /bin/bash -lc ./entrypoint.dev.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-python.black-formatter",
+        "batisteo.vscode-django",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
 }
