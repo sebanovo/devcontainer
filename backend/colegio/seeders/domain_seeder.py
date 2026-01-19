@@ -34,13 +34,13 @@ class DomainSeeder:
             )
 
             Domain.objects.create(
-                domain=f"{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.nip.io",
+                domain=f"aleman.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.nip.io",
                 tenant=client2,
                 is_primary=False,
             )
 
             Domain.objects.create(
-                domain=f"{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.sslip.io",
+                domain=f"aleman.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.sslip.io",
                 tenant=client2,
                 is_primary=False,
             )
