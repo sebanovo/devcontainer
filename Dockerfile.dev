@@ -26,17 +26,8 @@ RUN echo 'eval "$(starship init bash)"' >> /root/.bashrc
 
 WORKDIR /workspaces
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
-ENV PYTHONPATH=/workspaces/backend
+# Exponer puerto (Backend)
+EXPOSE 8000
 
-# COPY entrypoint.dev.sh /entrypoint.dev.sh
-
-# RUN chmod +x /entrypoint.dev.sh
-
-# ENTRYPOINT ["/entrypoint.dev.sh"]
-
-# Iniciar en Bash
-SHELL ["/bin/bash", "-c"]
-
-CMD  ["bash"]
+# Exponer el puerto (Frontend)
+EXPOSE 5173

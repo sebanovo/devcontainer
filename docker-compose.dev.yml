@@ -6,7 +6,10 @@ services:
     volumes:
       - .:/workspaces:cached
     command: 'sleep infinity'
-
+    environment:
+      - PYTHONDONTWRITEBYTECODE=1 # Evitar python .pyc y buffer
+      - PYTHONUNBUFFERED=1
+      - PYTHONPATH=/workspaces/backend
     ports:
       - '5173:5173'
       - '8000:8000'
