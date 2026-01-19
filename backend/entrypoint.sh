@@ -2,19 +2,6 @@
 
 set -e
 
-if [ ! -f .env ]; then
-  echo "Error: .env file not found!"
-  exit 1
-fi
-
-source .env 
-echo "Archivo .env cargado con éxito"
-
-cd backend
-
-echo "Instalar Dependencias...(backend)"
-pip install --no-cache-dir -r ./requirements.txt
-
 echo "Esperando a PostgreSQL en $POSTGRES_HOST:$POSTGRES_PORT..."
 until python ./scripts/wait_for_db.py; do
   echo "DB no disponible, reintentando..."
@@ -49,7 +36,7 @@ python manage.py migrate_schemas --shared || true
 # export DJANGO_SUPERUSER_PASSWORD
 # python manage.py createsuperuser --noinput
 
+python manage.py seed
 
-cd ../frontend
-echo "Instalar Dependencias...(frontend)"
-npm install
+echo "Levantando servidor de desarrollo..."
+python manage.py runserver 0.0.0.0:8000
