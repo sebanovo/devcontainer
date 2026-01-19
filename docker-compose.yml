@@ -35,7 +35,7 @@ services:
     environment:
       - PYTHONDONTWRITEBYTECODE=1 # Evitar python .pyc y buffer
       - PYTHONUNBUFFERED=1
-      - PYTHONPATH=/workspaces/backend
+      - PYTHONPATH=/app
     depends_on:
       db:
         condition: service_healthy # Espera a que la DB este OK
