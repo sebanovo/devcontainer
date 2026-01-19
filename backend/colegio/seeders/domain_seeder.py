@@ -14,11 +14,35 @@ class DomainSeeder:
                 is_primary=True,
             )
 
+            Domain.objects.create(
+                domain=f"{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.nip.io",
+                tenant=client1,
+                is_primary=False,
+            )
+
+            Domain.objects.create(
+                domain=f"{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.sslip.io",
+                tenant=client1,
+                is_primary=False,
+            )
+
             client2 = Client.objects.get(id=2)
             Domain.objects.create(
                 domain=f"aleman.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}",
                 tenant=client2,
                 is_primary=True,
+            )
+
+            Domain.objects.create(
+                domain=f"{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.nip.io",
+                tenant=client2,
+                is_primary=False,
+            )
+
+            Domain.objects.create(
+                domain=f"{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.sslip.io",
+                tenant=client2,
+                is_primary=False,
             )
 
             client3 = Client.objects.get(id=3)
