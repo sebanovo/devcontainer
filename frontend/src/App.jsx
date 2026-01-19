@@ -1,12 +1,16 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import { getApp } from './helpers';
+import Env from './constants/env';
 
 function AppHome() {
   return (
     <div>
       <h1>Hola app</h1>
-      <img src='http://localhost:8000/static/mark.jpg'></img>
+      {/* <img src='/static/mark.jpg'></img> */}
+      <img src={Env.VITE_API_URL + '/static/mark.jpg'}></img>
+      <img src={Env.VITE_API_URL + '/static/mark.jpg'}></img>
+      <h1>{Env.VITE_SYSTEM_NAME}</h1>
     </div>
   );
 }
