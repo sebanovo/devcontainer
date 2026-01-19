@@ -24,6 +24,12 @@ COPY starship.toml /root/.config/starship.toml
 
 RUN echo 'eval "$(starship init bash)"' >> /root/.bashrc
 
+WORKDIR /workspaces
+
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONPATH=/workspaces/backend
+
 # COPY entrypoint.dev.sh /entrypoint.dev.sh
 
 # RUN chmod +x /entrypoint.dev.sh
