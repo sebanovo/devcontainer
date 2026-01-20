@@ -3,7 +3,7 @@
 set -e
 
 echo "Esperando a PostgreSQL en $POSTGRES_HOST:$POSTGRES_PORT..."
-until python ./scripts/wait_for_db.py; do
+until python ./scripts/test_conection_db.py; do
   echo "DB no disponible, reintentando..."
   sleep 1
 done
