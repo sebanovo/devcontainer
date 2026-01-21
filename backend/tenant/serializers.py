@@ -1,12 +1,26 @@
 from rest_framework import serializers
 from .models import Alumno
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
+
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Group
+        fields = ["id", "name"]
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = get_user_model()
-        fields = ["id", "email", "username", "first_name", "last_name", "password"]
+        fields = [
+            "id",
+            "email",
+            "username",
+            "first_name",
+            "last_name",
+            "password",
+        ]
         extra_kwargs = {"password": {"write_only": True}}
 
     def create(self, validated_data):

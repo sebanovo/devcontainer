@@ -4,6 +4,7 @@ from rest_framework.authentication import get_user_model
 from datetime import date, timedelta
 from config.env import Env
 from django_tenants.utils import schema_context
+from django.db import transaction
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -88,32 +89,39 @@ class TenantRegistrationSerializer(serializers.Serializer):
         email = validated_data["email"]
         password = validated_data["password"]
 
-        # Crear tenant
-        tenant = Client.objects.create(
-            schema_name=tenant_name,
-            name=tenant_name,
-            paid_until=date.today() + timedelta(days=15),
-            on_trial=False,
-        )
+        try:
+            with transaction.atomic():
+                # Crear tenant
+                tenant = Client.objects.create(
+                    schema_name=tenant_name,
+                    name=tenant_name,
+                    paid_until=date.today() + timedelta(days=15),
+                    on_trial=False,
+                )
 
-        # Crear dominio principal
-        Domain.objects.create(
-            domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}",
-            is_primary=True,
-            tenant=tenant,
-        )
+                # Crear dominio principal
+                Domain.objects.create(
+                    domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}",
+                    is_primary=True,
+                    tenant=tenant,
+                )
 
-        Domain.objects.create(
-            domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.nip.io",
-            is_primary=False,
-            tenant=tenant,
-        )
+                Domain.objects.create(
+                    domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.nip.io",
+                    is_primary=False,
+                    tenant=tenant,
+                )
 
-        Domain.objects.create(
-            domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.sslip.io",
-            is_primary=False,
-            tenant=tenant,
-        )
+                Domain.objects.create(
+                    domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.sslip.io",
+                    is_primary=False,
+                    tenant=tenant,
+                )
+                self.create_tenant_superuser(tenant_name, manager_name, email, password)
+                return {"tenant": tenant_name, "manager": manager_name, "email": email}
 
-        self.create_tenant_superuser(tenant_name, manager_name, email, password)
-        return {"tenant": tenant_name, "manager": manager_name, "email": email}
+        except Exception as e:
+            # Aquí cualquier fallo hace rollback automático
+            raise serializers.ValidationError(
+                {"detail": f"Error creando tenant: {str(e)}"}
+            )
