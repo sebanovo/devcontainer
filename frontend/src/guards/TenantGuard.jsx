@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import NotSubdomainRegister from '../pages/fallback/NotSubdomainRegister';
+import NotSubdomainRegisterPage from '../pages/fallback/NotSubdomainRegisterPage';
 import { getSubdomain } from '../utils';
 import Env from '../constants/env';
 
@@ -39,7 +39,7 @@ export default function TenantGuard({ children }) {
   if (loading) return <p>Cargando...</p>;
 
   if (!validTenant) {
-    return <NotSubdomainRegister />;
+    return <NotSubdomainRegisterPage />;
   }
 
   return children;

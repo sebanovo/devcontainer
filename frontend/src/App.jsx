@@ -6,13 +6,14 @@ import LoginPageTenant from './tenant/pages/LoginPageTenant';
 import SignUpPageTenant from './tenant/pages/SignUpPageTenant';
 import TenantGuard from './guards/TenantGuard';
 import { getSubdomain, validateHost } from './utils';
-import NotFound from './pages/fallback/NotFound';
+import NotFoundPage from './pages/fallback/NotFoundPage';
+import PanelAdminPageTenant from './tenant/pages/PanelAdminPageTenant';
 
 function App() {
   // Detectar subdominio
   // const host = window.location.hostname; // ejemplo: acme.localhost
   const isHost = validateHost(window.location.hostname);
-  if (!isHost) return <NotFound />;
+  if (!isHost) return <NotFoundPage />;
   const subdomain = getSubdomain(window.location.hostname);
   const isTenant = !!subdomain;
 
@@ -24,18 +25,22 @@ function App() {
         <TenantGuard>
           <Routes>
             <Route path='/' element={<LandingPageTenant />} />
+            <Route path='/panel-admin' element={<PanelAdminPageTenant />} />
             <Route path='/login' element={<LoginPageTenant />} />
             <Route path='/signup' element={<SignUpPageTenant />} />
+            <Route path='*' element={<NotFoundPage />} />
           </Routes>
         </TenantGuard>
       </BrowserRouter>
     );
   }
+
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LandingPage />} />
         <Route path='/create-tenant' element={<CreateTenant />} />
+        <Route path='*' element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );

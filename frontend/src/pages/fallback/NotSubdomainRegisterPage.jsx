@@ -1,5 +1,5 @@
 // src/pages/NotSubdomainRegister.jsx
-export default function NotSubdomainRegister() {
+export default function NotSubdomainRegisterPage() {
   return (
     <div className='flex min-h-screen items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 p-4'>
       <div className='w-full max-w-md rounded-2xl bg-white p-8 text-center shadow-xl'>
