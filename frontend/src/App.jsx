@@ -1,8 +1,10 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-// import { getApp } from './helpers';
 import Env from './constants/env';
 import LandingPage from './pages/LandingPage';
 import CreateTenant from './pages/CreateTenant';
+import LandingPageTenant from './tenant/pages/LandingPageTenant';
+import LoginPageTenant from './tenant/pages/LoginPageTenant';
+import SignUpPageTenant from './tenant/pages/SignUpPageTenant';
 
 function AppHome() {
   return (
@@ -34,12 +36,37 @@ export function AdminRouter() {
   );
 }
 function App() {
-  // const CurrentApp = getApp();
-  // console.log({ app: CurrentApp });
+  // // const CurrentApp = getApp();
+  // // console.log({ app: CurrentApp });
+  // return (
+  //   // <BrowserRouter>
+  //   //   <CurrentApp />
+  //   // </BrowserRouter>
+  //   <BrowserRouter>
+  //     <Routes>
+  //       <Route path='/' element={<LandingPage />} />
+  //       <Route path='/create-tenant' element={<CreateTenant />} />
+  //     </Routes>
+  //   </BrowserRouter>
+  // );
+  // Detectar subdominio
+  const host = window.location.hostname; // ejemplo: acme.localhost
+  const subdomain = host.split('.')[0];
+
+  // Si subdomain es distinto del principal (localhost), cargamos el tenant
+  const isTenant = subdomain && subdomain !== Env.VITE_HOST;
+  if (isTenant) {
+    return (
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<LandingPageTenant />} />
+          <Route path='/login' element={<LoginPageTenant />} />
+          <Route path='/signup' element={<SignUpPageTenant />} />
+        </Routes>
+      </BrowserRouter>
+    );
+  }
   return (
-    // <BrowserRouter>
-    //   <CurrentApp />
-    // </BrowserRouter>
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<LandingPage />} />

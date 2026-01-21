@@ -36,6 +36,7 @@ export default function CreateTenant() {
         setManagerName('');
         setEmail('');
         setPassword('');
+        window.location.href = `http://${data.tenant}.${Env.VITE_HOST}:5173/`;
       } else if (res.status === 400) {
         // Mostrar errores de validación del backend
         const errors = Object.entries(data)
