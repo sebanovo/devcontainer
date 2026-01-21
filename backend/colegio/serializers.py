@@ -1,6 +1,9 @@
 from rest_framework import serializers
 from .models import *
 from rest_framework.authentication import get_user_model
+from datetime import date, timedelta
+from config.env import Env
+from django_tenants.utils import schema_context
 
 
 class UserSerializer(serializers.ModelSerializer):
@@ -59,3 +62,58 @@ class AlumnoSerializer(serializers.ModelSerializer):
     class Meta:
         model = Alumno
         fields = "__all__"
+
+
+class TenantRegistrationSerializer(serializers.Serializer):
+    tenant_name = serializers.CharField(max_length=150)
+    manager_name = serializers.CharField(max_length=150)
+    email = serializers.EmailField()
+    password = serializers.CharField(write_only=True)
+
+    def create_tenant_superuser(self, schema_name, username, email, password):
+        with schema_context(schema_name):
+            User = get_user_model()
+            if not User.objects.filter(username=username).exists():
+                User.objects.create_superuser(
+                    username=username, email=email, password=password
+                )
+            else:
+                raise Exception(
+                    f"️Superusuario {username} ya existe en tenant {schema_name}"
+                )
+
+    def create(self, validated_data):
+        tenant_name = validated_data["tenant_name"]
+        manager_name = validated_data["manager_name"]
+        email = validated_data["email"]
+        password = validated_data["password"]
+
+        # Crear tenant
+        tenant = Client.objects.create(
+            schema_name=tenant_name,
+            name=tenant_name,
+            paid_until=date.today() + timedelta(days=15),
+            on_trial=False,
+        )
+
+        # Crear dominio principal
+        Domain.objects.create(
+            domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}",
+            is_primary=True,
+            tenant=tenant,
+        )
+
+        Domain.objects.create(
+            domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.nip.io",
+            is_primary=False,
+            tenant=tenant,
+        )
+
+        Domain.objects.create(
+            domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.sslip.io",
+            is_primary=False,
+            tenant=tenant,
+        )
+
+        self.create_tenant_superuser(tenant_name, manager_name, email, password)
+        return {"tenant": tenant_name, "manager": manager_name, "email": email}

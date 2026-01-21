@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from rest_framework import status, views
+from rest_framework.response import Response
+from drf_spectacular.utils import extend_schema
 
 # Create your views here.
 
@@ -40,3 +43,17 @@ class InvoiceViewSet(viewsets.ModelViewSet):
 class AlumnoViewSet(viewsets.ModelViewSet):
     queryset = Alumno.objects.all()
     serializer_class = AlumnoSerializer
+
+
+class TenantRegistrationView(views.APIView):
+    @extend_schema(
+        request=TenantRegistrationSerializer,
+        responses={201: TenantRegistrationSerializer, 400: dict},
+        description="Endpoint para crear un tenant + dominio + superusuario encargado",
+    )
+    def post(self, request):
+        serializer = TenantRegistrationSerializer(data=request.data)
+        if serializer.is_valid():
+            data = serializer.save()
+            return Response(data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
