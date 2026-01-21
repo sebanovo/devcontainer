@@ -7,7 +7,7 @@ export const APPS = [
     main: true,
   },
   {
-    subdomain: 'admin',
+    subdomain: 'aleman',
     app: AdminRouter,
     main: false,
   },
