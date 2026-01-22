@@ -67,7 +67,7 @@ INSTALLED_APPS = (
     + list(COMODIN_APPS)
 )
 
-TENANT_MODEL = "shared.Client"
+TENANT_MODEL = "shared.Tenant"
 
 TENANT_DOMAIN_MODEL = "shared.Domain"
 

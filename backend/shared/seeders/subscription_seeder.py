@@ -1,21 +1,21 @@
 from datetime import date, timedelta
-from ..models import Subscription, Client, Plan
+from ..models import Subscription, Tenant, Plan
 
 
 class SubscriptionSeeder:
     @staticmethod
     def run():
         try:
-            client2 = Client.objects.get(id=2)
+            tenant2 = Tenant.objects.get(id=2)
             plan1 = Plan.objects.get(name="Básico")
-            client3 = Client.objects.get(id=3)
+            tenant3 = Tenant.objects.get(id=3)
             plan2 = Plan.objects.get(name="Estándar")
-            client4 = Client.objects.get(id=4)
+            tenant4 = Tenant.objects.get(id=4)
             plan3 = Plan.objects.get(name="Premium")
-            client5 = Client.objects.get(id=5)
+            tenant5 = Tenant.objects.get(id=5)
 
             Subscription.objects.create(
-                client=client2,
+                tenant=tenant2,
                 plan=plan1,
                 start_date=date.today(),
                 end_date=date.today() + timedelta(days=30),
@@ -23,7 +23,7 @@ class SubscriptionSeeder:
             )
 
             Subscription.objects.create(
-                client=client3,
+                tenant=tenant3,
                 plan=plan1,
                 start_date=date.today(),
                 end_date=date.today() + timedelta(days=30),
@@ -31,14 +31,14 @@ class SubscriptionSeeder:
             )
 
             Subscription.objects.create(
-                client=client4,
+                tenant=tenant4,
                 plan=plan2,
                 start_date=date.today(),
                 end_date=date.today() + timedelta(days=30),
                 active=True,
             )
             Subscription.objects.create(
-                client=client5,
+                tenant=tenant5,
                 plan=plan3,
                 start_date=date.today(),
                 end_date=date.today() + timedelta(days=30),

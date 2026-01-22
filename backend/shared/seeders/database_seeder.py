@@ -1,4 +1,4 @@
-from .client_seeder import ClientSeeder
+from .tenant_seeder import TenantSeeder
 from .domain_seeder import DomainSeeder
 from .plan_seeder import PlanSeeder
 from .subscription_seeder import SubscriptionSeeder
@@ -11,7 +11,7 @@ class DatabaseSeeder:
     @staticmethod
     def run(stdout, style):
         seeders = [
-            ClientSeeder,
+            TenantSeeder,
             DomainSeeder,
             PlanSeeder,
             SubscriptionSeeder,

@@ -6,7 +6,7 @@ from django.db import models
 from django_tenants.models import TenantMixin, DomainMixin
 
 
-class Client(TenantMixin):
+class Tenant(TenantMixin):
     name = models.CharField(max_length=100)
     paid_until = models.DateField()
     on_trial = models.BooleanField()
@@ -31,7 +31,7 @@ class Plan(models.Model):
 
 
 class Subscription(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     plan = models.ForeignKey(Plan, on_delete=models.CASCADE)
     start_date = models.DateField()
     end_date = models.DateField()
@@ -40,7 +40,7 @@ class Subscription(models.Model):
 
 # Facturacion / pagos
 class Invoice(models.Model):
-    client = models.ForeignKey(Client, on_delete=models.CASCADE)
+    tenant = models.ForeignKey(Tenant, on_delete=models.CASCADE)
     amount = models.DecimalField(max_digits=8, decimal_places=2)  # cantidad
     issued_on = models.DateField(auto_now_add=True)  # problemas
     paid = models.BooleanField(default=False)  # pagada

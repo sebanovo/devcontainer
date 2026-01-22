@@ -1,5 +1,5 @@
 from datetime import date
-from ..models import Invoice, Client
+from ..models import Invoice, Tenant
 
 
 class InvoiceSeeder:
@@ -7,22 +7,22 @@ class InvoiceSeeder:
     def run():
 
         try:
-            client2 = Client.objects.get(id=2)
-            client3 = Client.objects.get(id=3)
-            client4 = Client.objects.get(id=4)
-            client5 = Client.objects.get(id=5)
+            tenant2 = Tenant.objects.get(id=2)
+            tenant3 = Tenant.objects.get(id=3)
+            tenant4 = Tenant.objects.get(id=4)
+            tenant5 = Tenant.objects.get(id=5)
             Invoice.objects.create(
-                client=client2, amount=50, issued_on=date.today(), paid=True
+                tenant=tenant2, amount=50, issued_on=date.today(), paid=True
             )
 
             Invoice.objects.create(
-                client=client3, amount=50, issued_on=date.today(), paid=False
+                tenant=tenant3, amount=50, issued_on=date.today(), paid=False
             )
             Invoice.objects.create(
-                client=client4, amount=100, issued_on=date.today(), paid=False
+                tenant=tenant4, amount=100, issued_on=date.today(), paid=False
             )
             Invoice.objects.create(
-                client=client5, amount=200, issued_on=date.today(), paid=False
+                tenant=tenant5, amount=200, issued_on=date.today(), paid=False
             )
 
         except Exception as e:

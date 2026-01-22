@@ -1,7 +1,7 @@
-from shared.models import Client, Domain
+from shared.models import Tenant, Domain
 
 # create your public tenant
-tenant = Client(
+tenant = Tenant(
     schema_name="public", name="Schemas Inc.", paid_until="2016-12-05", on_trial=False
 )
 tenant.save()

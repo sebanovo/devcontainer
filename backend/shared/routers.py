@@ -3,7 +3,7 @@ from .views import *
 
 router = routers.DefaultRouter()
 router.register(r"users", UserViewSet)
-router.register(r"clients", ClientViewSet)
+router.register(r"tenants", TenantViewSet)
 router.register(r"domains", DomainViewSet)
 router.register(r"plans", PlanViewSet)
 router.register(r"subscriptions", SubscriptionViewSet)

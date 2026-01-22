@@ -1,11 +1,11 @@
 from django.contrib import admin
 from django_tenants.admin import TenantAdminMixin
 
-from .models import Client, Domain
+from .models import Tenant, Domain
 
 
-@admin.register(Client)
-class ClientAdmin(TenantAdminMixin, admin.ModelAdmin):
+@admin.register(Tenant)
+class TenantAdmin(TenantAdminMixin, admin.ModelAdmin):
     list_display = ("name", "paid_until")
 
 

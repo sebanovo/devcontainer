@@ -29,9 +29,9 @@ class UserSerializer(serializers.ModelSerializer):
         return new_user
 
 
-class ClientSerializer(serializers.ModelSerializer):
+class TenantSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Client
+        model = Tenant
         exclude = ["created_on"]
 
 
@@ -92,7 +92,7 @@ class TenantRegistrationSerializer(serializers.Serializer):
         try:
             with transaction.atomic():
                 # Crear tenant
-                tenant = Client.objects.create(
+                tenant = Tenant.objects.create(
                     schema_name=tenant_name,
                     name=tenant_name,
                     paid_until=date.today() + timedelta(days=15),
