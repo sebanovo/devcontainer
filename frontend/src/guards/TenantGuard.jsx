@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import NotSubdomainRegisterPage from '../pages/fallback/NotSubdomainRegisterPage';
-import { getSubdomain } from '../utils';
+import { getSubdomain } from '../utils/hosts';
 import Env from '../constants/env';
 
 export default function TenantGuard({ children }) {

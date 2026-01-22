@@ -1,10 +1,20 @@
 import { useState } from 'react';
 import Sidebar from '../components/SideBar';
-import { DashboardContent, UsersContent, GroupsContent } from './content';
+import DashboardContent from './content/DashboardContent';
+import UsersContent from './content/UsersContent';
+import GroupsContent from './content/GroupsContent';
 import Env from '../../constants/env';
+import { removeTokens } from '../../utils/auth';
+import { useNavigate } from 'react-router-dom';
 
 export default function PanelAdminPageTenant() {
   const [activeSection, setActiveSection] = useState('dashboard');
+  const navigate = useNavigate();
+
+  const handleLogOut = () => {
+    removeTokens();
+    navigate('/login');
+  };
 
   const renderContent = () => {
     switch (activeSection) {
@@ -30,6 +40,12 @@ export default function PanelAdminPageTenant() {
             </h1>
             <div className='flex items-center'>
               <span className='mr-4 text-gray-700'>Bienvenido, Admin</span>
+              <button
+                onClick={handleLogOut}
+                className='rounded-lg bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700'
+              >
+                Cerrar sesión
+              </button>
             </div>
           </div>
         </header>

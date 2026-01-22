@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getSubdomain } from '../../../utils/index';
+import { getSubdomain } from '../../../utils/hosts';
 import Env from '../../../constants/env';
 
 function UsersContent() {
