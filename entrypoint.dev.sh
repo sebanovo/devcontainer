@@ -22,11 +22,11 @@ until python ./scripts/test_conection_db.py; do
 done
 echo "PostgreSQL listo."
 
-echo "Aplicando makemigrations (si no hay cambios, no pasa nada)..."
-python manage.py makemigrations || true
+# echo "Aplicando makemigrations (si no hay cambios, no pasa nada)..."
+# python manage.py makemigrations || true
 
-echo "Ejecutando las migraciones (solamente del esquema compartido)..."
-python manage.py migrate_schemas --shared || true
+# echo "Ejecutando las migraciones (solamente del esquema compartido)..."
+# python manage.py migrate_schemas --shared || true
 
 
 # echo "Creando el Esquema principal..."

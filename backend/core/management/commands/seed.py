@@ -1,5 +1,5 @@
 from django.core.management.base import BaseCommand
-from colegio.seeders.database_seeder import DatabaseSeeder as PublicDatabaseSeeder
+from shared.seeders.database_seeder import DatabaseSeeder as PublicDatabaseSeeder
 from tenant.seeders.database_seeder import DatabaseSeeder as TenantDatabaseSeeder
 
 

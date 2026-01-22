@@ -34,7 +34,7 @@ ALLOWED_HOSTS = Env.ALLOWED_HOSTS  # ["*"]
 
 # Application definition
 SHARED_APPS = [
-    "colegio",
+    "shared",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",  # permite relacion de tablas por GenericForeignKey
@@ -67,9 +67,9 @@ INSTALLED_APPS = (
     + list(COMODIN_APPS)
 )
 
-TENANT_MODEL = "colegio.Client"
+TENANT_MODEL = "shared.Client"
 
-TENANT_DOMAIN_MODEL = "colegio.Domain"
+TENANT_DOMAIN_MODEL = "shared.Domain"
 
 MIDDLEWARE = [
     "django_tenants.middleware.main.TenantMainMiddleware",

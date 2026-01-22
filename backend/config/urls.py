@@ -33,7 +33,7 @@ from drf_spectacular.views import (
 urlpatterns = (
     [
         path("admin/", admin.site.urls),
-        path("api/v1/", include("colegio.urls")),
+        path("api/v1/", include("shared.urls")),
         # path("apiv2/", include("tenant.urls")),
         # Autenticación con Simple JWT
         path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),

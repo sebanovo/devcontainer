@@ -1,4 +1,4 @@
-from colegio.models import Client, Domain
+from shared.models import Client, Domain
 
 # create your public tenant
 tenant = Client(
