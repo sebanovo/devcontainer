@@ -1,37 +1,19 @@
 import { useState } from 'react';
 import Sidebar from '../components/SideBar';
-// import { useNavigate } from 'react-router-dom';
-import { DashboardContent } from './content';
-import Env from '../../constants/env.js';
+import { DashboardContent, UsersContent, GroupsContent } from './content';
+import Env from '../../constants/env';
 
 export default function PanelAdminPageTenant() {
   const [activeSection, setActiveSection] = useState('dashboard');
-  // const navigate = useNavigate();
-
-  // const handleLogOut = () => {
-  //   fetch('api/auth/logout/', { method: 'POST', credentials: 'include' })
-  //     .then((response) => {
-  //       if (response.ok) {
-  //         localStorage.removeItem('accessToken');
-  //         localStorage.removeItem('refreshToken');
-  //         navigate('/login');
-  //       } else {
-  //         alert('Error al cerrar sesión');
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.error('Error al cerrar sesión:', error);
-  //     });
-  // };
 
   const renderContent = () => {
     switch (activeSection) {
       case 'dashboard':
         return <DashboardContent />;
-      // case 'levels':
-      //   return <LevelsContent />;
-      // case 'periods':
-      //   return <PeriodsContent />;
+      case 'users':
+        return <UsersContent />;
+      case 'groups':
+        return <GroupsContent />;
       default:
         return <DashboardContent />;
     }
@@ -48,12 +30,6 @@ export default function PanelAdminPageTenant() {
             </h1>
             <div className='flex items-center'>
               <span className='mr-4 text-gray-700'>Bienvenido, Admin</span>
-              {/* <button
-                onClick={handleLogOut}
-                className='rounded-lg bg-indigo-600 px-4 py-2 text-white transition hover:bg-indigo-700'
-              >
-                Cerrar sesión
-              </button> */}
             </div>
           </div>
         </header>

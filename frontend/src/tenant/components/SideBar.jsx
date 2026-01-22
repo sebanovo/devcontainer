@@ -1,20 +1,6 @@
-import { useState } from 'react';
 import Env from '../../constants/env';
 
 function Sidebar({ activeSection, setActiveSection }) {
-  const [openSections, setOpenSections] = useState({
-    academics: true,
-    people: false,
-    management: false,
-  });
-
-  const toggleSection = (section) => {
-    setOpenSections((prev) => ({
-      ...prev,
-      [section]: !prev[section],
-    }));
-  };
-
   const menuItems = [
     {
       id: 'dashboard',
@@ -22,29 +8,14 @@ function Sidebar({ activeSection, setActiveSection }) {
       icon: '📊',
     },
     {
-      id: 'academics',
-      name: 'Gestión Académica',
-      icon: '🎓',
-      children: [
-        { id: 'levels', name: 'Niveles Educativos' },
-        { id: 'periods', name: 'Períodos Académicos' },
-        { id: 'grades', name: 'Grados' },
-        { id: 'sections', name: 'Secciones' },
-        { id: 'subjects', name: 'Materias' },
-        { id: 'Asistencia', name: 'Asistencia' },
-        { id: 'Document', name: 'Document' },
-      ],
-    },
-
-    {
-      id: 'people',
-      name: 'Gestión de Personas',
+      id: 'users',
+      name: 'Usuarios',
       icon: '👥',
-      children: [
-        { id: 'persons', name: 'Personas' },
-        { id: 'students', name: 'Estudiantes' },
-        { id: 'enrollments', name: 'Matrículas' },
-      ],
+    },
+    {
+      id: 'groups',
+      name: 'Grupos',
+      icon: '👨‍👩‍👧‍👦',
     },
   ];
 
@@ -58,53 +29,15 @@ function Sidebar({ activeSection, setActiveSection }) {
         <ul className='space-y-1 px-2'>
           {menuItems.map((item) => (
             <li key={item.id}>
-              {item.children ? (
-                <>
-                  <button
-                    onClick={() => toggleSection(item.id)}
-                    className={`flex w-full items-center justify-between rounded-lg p-3 transition hover:bg-indigo-700 ${
-                      openSections[item.id] ? 'bg-indigo-700' : ''
-                    }`}
-                  >
-                    <div className='flex items-center'>
-                      <span className='mr-3 text-lg'>{item.icon}</span>
-                      <span>{item.name}</span>
-                    </div>
-                    <span
-                      className={`transition-transform ${openSections[item.id] ? 'rotate-180 transform' : ''}`}
-                    >
-                      ▼
-                    </span>
-                  </button>
-
-                  {openSections[item.id] && (
-                    <ul className='mt-1 ml-6 space-y-1'>
-                      {item.children.map((child) => (
-                        <li key={child.id}>
-                          <button
-                            onClick={() => setActiveSection(child.id)}
-                            className={`w-full rounded-lg p-2 pl-8 text-left transition hover:bg-indigo-700 ${
-                              activeSection === child.id ? 'bg-indigo-600' : ''
-                            }`}
-                          >
-                            {child.name}
-                          </button>
-                        </li>
-                      ))}
-                    </ul>
-                  )}
-                </>
-              ) : (
-                <button
-                  onClick={() => setActiveSection(item.id)}
-                  className={`flex w-full items-center rounded-lg p-3 transition hover:bg-indigo-700 ${
-                    activeSection === item.id ? 'bg-indigo-600' : ''
-                  }`}
-                >
-                  <span className='mr-3 text-lg'>{item.icon}</span>
-                  <span>{item.name}</span>
-                </button>
-              )}
+              <button
+                onClick={() => setActiveSection(item.id)}
+                className={`flex w-full items-center rounded-lg p-3 transition hover:bg-indigo-700 ${
+                  activeSection === item.id ? 'bg-indigo-600' : ''
+                }`}
+              >
+                <span className='mr-3 text-lg'>{item.icon}</span>
+                <span>{item.name}</span>
+              </button>
             </li>
           ))}
         </ul>

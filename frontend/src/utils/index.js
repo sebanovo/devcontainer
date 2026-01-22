@@ -8,6 +8,7 @@ export function validateHost(hostname) {
     hostname === 'localhost'
   );
 }
+
 /*
 Importante si no hay subdominio devuelve null
 En caso que lo halla devuelve el texto simplemente
