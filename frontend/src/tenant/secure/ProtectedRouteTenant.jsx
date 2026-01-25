@@ -1,7 +1,7 @@
 import { Navigate } from 'react-router-dom';
 import { getToken, isTokenValid } from '../../utils/auth';
 
-function ProtectedRoute({ children }) {
+function ProtectedRouteTenant({ children }) {
   const token = getToken();
   const isValid = isTokenValid(token);
 
@@ -12,4 +12,4 @@ function ProtectedRoute({ children }) {
   return children;
 }
 
-export default ProtectedRoute;
+export default ProtectedRouteTenant;

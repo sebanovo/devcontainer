@@ -1,6 +1,6 @@
 import Env from '../../constants/env';
 
-function Sidebar({ activeSection, setActiveSection }) {
+function SidebarTenant({ activeSection, setActiveSection }) {
   const menuItems = [
     {
       id: 'dashboard',
@@ -41,9 +41,15 @@ function Sidebar({ activeSection, setActiveSection }) {
             </li>
           ))}
         </ul>
+        <button
+          onClick={() => (window.location.href = '/')}
+          className='text-white-700 rounded-lg border border-gray-300 px-6 py-2 font-medium transition hover:bg-blue-600'
+        >
+          Volver al inicio
+        </button>
       </nav>
     </div>
   );
 }
 
-export default Sidebar;
+export default SidebarTenant;

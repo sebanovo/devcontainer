@@ -1,4 +1,4 @@
-function SidebarItem({ item, activeSection, setActiveSection, isOpen, onToggle }) {
+function SidebarItemTenant({ item, activeSection, setActiveSection, isOpen, onToggle }) {
   const isActive = activeSection === item.id;
 
   if (item.children) {
@@ -78,4 +78,4 @@ function SidebarItem({ item, activeSection, setActiveSection, isOpen, onToggle }
   );
 }
 
-export default SidebarItem;
+export default SidebarItemTenant;

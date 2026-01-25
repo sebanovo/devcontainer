@@ -1,11 +1,9 @@
 import { useState } from 'react';
-import Sidebar from '../components/SideBar';
-import DashboardContent from './content/DashboardContent';
-import UsersContent from './content/UsersContent';
-import GroupsContent from './content/GroupsContent';
+import { useNavigate } from 'react-router-dom';
+import { SidebarTenant } from '../components';
+import { DashboardContent, UsersContent, GroupsContent } from './content';
 import Env from '../../constants/env';
 import { removeTokens } from '../../utils/auth';
-import { useNavigate } from 'react-router-dom';
 
 export default function PanelAdminPageTenant() {
   const [activeSection, setActiveSection] = useState('dashboard');
@@ -31,7 +29,7 @@ export default function PanelAdminPageTenant() {
 
   return (
     <div className='flex h-screen bg-gray-100'>
-      <Sidebar activeSection={activeSection} setActiveSection={setActiveSection} />
+      <SidebarTenant activeSection={activeSection} setActiveSection={setActiveSection} />
       <div className='flex flex-1 flex-col overflow-hidden'>
         <header className='bg-white shadow-sm'>
           <div className='flex items-center justify-between px-6 py-4'>

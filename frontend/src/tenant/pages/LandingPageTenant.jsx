@@ -1,10 +1,10 @@
-import NavBar from '../components/NavBarTenant';
+import { NavBarTenant } from '../components';
 import Env from '../../constants/env';
 
 export default function LandingPageTenant() {
   return (
     <main className='flex min-h-screen flex-col bg-gradient-to-br from-blue-50 to-green-100'>
-      <NavBar
+      <NavBarTenant
         routes={[
           {
             name: 'Características',
@@ -19,7 +19,7 @@ export default function LandingPageTenant() {
             href: '#testimonials',
           },
         ]}
-      ></NavBar>
+      ></NavBarTenant>
       <header className='flex flex-col items-center justify-center px-4 py-16 text-center'>
         <h1 className='mb-6 text-4xl font-extrabold text-green-800 md:text-6xl'>Colegio Aleman</h1>
         <p className='mb-8 max-w-3xl text-lg text-gray-700 md:text-xl'>

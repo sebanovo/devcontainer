@@ -6,7 +6,7 @@ export default defineConfig({
   envDir: '../',
   plugins: [react(), tailwindcss()],
   server: {
-    host: true,
+    host: true, // '0.0.0.0'
     port: 5173,
     watch: {
       usePolling: true,

@@ -1,8 +1,6 @@
-import NavBar from '../components/NavBar';
+import { NavBar } from '../components';
+// import { NavBar, FeatureCard, PriceCard, TestimonialCard } from '../components';
 import Env from '../constants/env';
-// import FeatureCard from '../components/FeatureCard';
-// import PriceCard from '../components/PriceCard';
-// import TestimonialCard from '../components/TestimonialCard';
 
 function LandingPage() {
   return (
