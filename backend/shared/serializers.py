@@ -66,7 +66,7 @@ class AlumnoSerializer(serializers.ModelSerializer):
 
 
 class TenantRegistrationSerializer(serializers.Serializer):
-    tenant_name = serializers.CharField(max_length=150)
+    subdomain = serializers.CharField(max_length=150)
     manager_name = serializers.CharField(max_length=150)
     email = serializers.EmailField()
     password = serializers.CharField(write_only=True)
@@ -84,7 +84,7 @@ class TenantRegistrationSerializer(serializers.Serializer):
                 )
 
     def create(self, validated_data):
-        tenant_name = validated_data["tenant_name"]
+        subdomain = validated_data["subdomain"]
         manager_name = validated_data["manager_name"]
         email = validated_data["email"]
         password = validated_data["password"]
@@ -93,32 +93,32 @@ class TenantRegistrationSerializer(serializers.Serializer):
             with transaction.atomic():
                 # Crear tenant
                 tenant = Tenant.objects.create(
-                    schema_name=tenant_name,
-                    name=tenant_name,
+                    schema_name=subdomain,
+                    name=subdomain,
                     paid_until=date.today() + timedelta(days=15),
                     on_trial=False,
                 )
 
                 # Crear dominio principal
                 Domain.objects.create(
-                    domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}",
+                    domain=f"{subdomain}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}",
                     is_primary=True,
                     tenant=tenant,
                 )
 
                 Domain.objects.create(
-                    domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.nip.io",
+                    domain=f"{subdomain}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.nip.io",
                     is_primary=False,
                     tenant=tenant,
                 )
 
                 Domain.objects.create(
-                    domain=f"{tenant_name}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.sslip.io",
+                    domain=f"{subdomain}.{Env.MAIN_SCHEMA_DOMAIN_DOMAIN}.sslip.io",
                     is_primary=False,
                     tenant=tenant,
                 )
-                self.create_tenant_superuser(tenant_name, manager_name, email, password)
-                return {"tenant": tenant_name, "manager": manager_name, "email": email}
+                self.create_tenant_superuser(subdomain, manager_name, email, password)
+                return {"subdomain": subdomain, "manager": manager_name, "email": email}
 
         except Exception as e:
             # Aquí cualquier fallo hace rollback automático

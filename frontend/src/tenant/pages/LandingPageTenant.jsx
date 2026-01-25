@@ -1,4 +1,5 @@
 import { NavBarTenant } from '../components';
+import { getSubdomain } from '../../utils/hosts';
 import Env from '../../constants/env';
 
 export default function LandingPageTenant() {
@@ -21,7 +22,9 @@ export default function LandingPageTenant() {
         ]}
       ></NavBarTenant>
       <header className='flex flex-col items-center justify-center px-4 py-16 text-center'>
-        <h1 className='mb-6 text-4xl font-extrabold text-green-800 md:text-6xl'>Colegio Aleman</h1>
+        <h1 className='mb-6 text-4xl font-extrabold text-green-800 md:text-6xl'>
+          Colegio {getSubdomain(window.location.hostname)}
+        </h1>
         <p className='mb-8 max-w-3xl text-lg text-gray-700 md:text-xl'>
           El mejor Colegio de Santa Cruz
         </p>

@@ -18,6 +18,14 @@ export default function NavBar({ routes }) {
           </a>
         ))}
       </div>
+      <div className='flex gap-2'>
+        <a
+          href='/login'
+          className='rounded-lg bg-indigo-600 px-4 py-2 text-white shadow transition hover:bg-indigo-700'
+        >
+          Iniciar sesión
+        </a>
+      </div>
     </nav>
   );
 }

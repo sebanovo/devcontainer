@@ -22,7 +22,7 @@ function SidebarTenant({ activeSection, setActiveSection }) {
   return (
     <div className='flex w-64 flex-col bg-indigo-800 text-white'>
       <div className='flex items-center p-4'>
-        <span className='text-xl font-bold'>🎯 {Env.SYSTEM_NAME}</span>
+        <span className='text-xl font-bold'>🎯 {Env.VITE_SYSTEM_NAME}</span>
       </div>
 
       <nav className='flex-1 overflow-y-auto pt-2'>
@@ -41,13 +41,15 @@ function SidebarTenant({ activeSection, setActiveSection }) {
             </li>
           ))}
         </ul>
+      </nav>
+      <div className='flex flex-col items-center justify-end'>
         <button
           onClick={() => (window.location.href = '/')}
           className='text-white-700 rounded-lg border border-gray-300 px-6 py-2 font-medium transition hover:bg-blue-600'
         >
           Volver al inicio
         </button>
-      </nav>
+      </div>
     </div>
   );
 }

@@ -98,13 +98,14 @@ function LoginPageTenant() {
           <a href='/signup' className='text-indigo-600 hover:underline'>
             Regístrate
           </a>
+          <br />
+          <a
+            onClick={() => (window.location.href = '/')}
+            className='cursor-pointer text-indigo-600 hover:underline'
+          >
+            Volver al inicio
+          </a>
         </p>
-        <button
-          onClick={() => (window.location.href = '/')}
-          className='rounded-lg border border-gray-300 px-6 py-2 font-medium text-gray-700 transition hover:bg-gray-100'
-        >
-          Volver al inicio
-        </button>
       </div>
     </div>
   );
