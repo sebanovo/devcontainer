@@ -18,4 +18,4 @@ python manage.py migrate_schemas --shared || true
 python manage.py seed
 
 echo "Levantando servidor de desarrollo..."
-python manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000 --nostatic

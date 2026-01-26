@@ -26,10 +26,8 @@ class Env:
     DEBUG = env.bool("DEBUG")
 
     # Hosts y CORS
-    DEFAULT_TENANT_SCHEMA = env.str("DEFAULT_TENANT_SCHEMA").strip()
     ALLOWED_HOSTS = env.str("ALLOWED_HOSTS").strip().split(",")
     CORS_ALLOW_ALL_ORIGINS = env.bool("CORS_ALLOW_ALL_ORIGINS")
-    CSRF_TRUSTED_ORIGINS = env.str("CSRF_TRUSTED_ORIGINS").strip()
 
     # Base de datos
     POSTGRES_DB = env.str("POSTGRES_DB").strip()
@@ -37,9 +35,6 @@ class Env:
     POSTGRES_PASSWORD = env.str("POSTGRES_PASSWORD").strip()
     POSTGRES_HOST = env.str("POSTGRES_HOST").strip()
     POSTGRES_PORT = env.str("POSTGRES_PORT").strip()
-
-    # API
-    VITE_API_URL = env.str("VITE_API_URL").strip()
 
     # Esquema principal
     MAIN_SCHEMA_DOMAIN_DOMAIN = env.str("MAIN_SCHEMA_DOMAIN_DOMAIN").strip()
@@ -60,10 +55,8 @@ class Env:
 # print("DEBUG                     :", Env.DEBUG)
 
 # print("\n--- HOSTS & CORS ---")
-# print("DEFAULT_TENANT_SCHEMA      :", Env.DEFAULT_TENANT_SCHEMA)
 # print("ALLOWED_HOSTS              :", Env.ALLOWED_HOSTS)
 # print("CORS_ALLOW_ALL_ORIGINS     :", Env.CORS_ALLOW_ALL_ORIGINS)
-# print("CSRF_TRUSTED_ORIGINS       :", Env.CSRF_TRUSTED_ORIGINS)
 
 # print("\n--- DATABASE ---")
 # print("POSTGRES_DB                :", Env.POSTGRES_DB)
@@ -71,9 +64,6 @@ class Env:
 # print("POSTGRES_PASSWORD          :", Env.POSTGRES_PASSWORD)
 # print("POSTGRES_HOST              :", Env.POSTGRES_HOST)
 # print("POSTGRES_PORT              :", Env.POSTGRES_PORT)
-
-# print("\n--- API ---")
-# print("VITE_API_URL               :", Env.VITE_API_URL)
 
 # print("\n--- MAIN SCHEMA ---")
 # print("MAIN_SCHEMA_DOMAIN_DOMAIN  :", Env.MAIN_SCHEMA_DOMAIN_DOMAIN)

@@ -22,7 +22,7 @@ export default function CreateTenant() {
     };
 
     try {
-      const res = await fetch(`${Env.VITE_API_URL}/api/v1/register-tenant/`, {
+      const res = await fetch(`http://${Env.VITE_HOST}:8000/api/v1/register-tenant/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),

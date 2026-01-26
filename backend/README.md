@@ -43,6 +43,9 @@ python manage.py reset_db
 python manage.py migrate_schemas --shared
 
 python manage.py seed
+
+# porque --nostatic para poder servir los archivos estaticos sin usar wsgi o nginx
+python manage.py runserver 0.0.0.0:8000 --nostatic
 ```
 
 ```bash 

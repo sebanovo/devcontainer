@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
-void main() {
+Future<void> main() async {
+  await dotenv.load(fileName: "../.env");
   runApp(MyApp());
 }
 
 // Cambiar localhost a 10.0.2.2 para emulador Android
-const String baseUrl = "http://192.168.0.225:8000";
+// const String baseUrl = "http://192.168.0.225:8000";
+// const String baseUrl = "http://18.188.44.65.nip.io:8000";
+const String baseUrl = "http://localhost:8000";
 
 class Alumno {
   final int id;
