@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
-import 'home_page.dart';
 import 'package:mobile/constants/env.dart';
 
 class LoginPage extends StatefulWidget {
@@ -31,17 +30,17 @@ class _LoginPageState extends State<LoginPage> {
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      subdomains = data.map<String>((e) => e["domain"].toString()).toList();
-      final domains = data
-          .map<String>((e) {
-            final full = e["domain"].toString();
-            return full.split('.').first; // "aleman"
-          })
-          .toSet()
-          .toList(); // 👈 elimina duplicados
-
       setState(() {
-        subdomains = domains;
+        subdomains =
+            (data
+                      .map<String>((e) {
+                        final full = e["domain"].toString();
+                        return full.split('.').first; // "aleman"
+                      })
+                      .toSet() // 👈 elimina duplicados
+                      .toList()
+                  as List<String>)
+              ..removeAt(0);
       });
     }
   }
@@ -71,12 +70,9 @@ class _LoginPageState extends State<LoginPage> {
 
       print("Login exitoso");
       print("Access: ${data["access"]}");
-      if (context.mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const HomePage()),
-        );
-      }
+
+      if (!mounted) return;
+      Navigator.pushReplacementNamed(context, '/home');
     } else {
       print("Error de login: ${response.body}");
     }

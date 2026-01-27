@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'login_page.dart';
+import 'users_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,12 +8,8 @@ class HomePage extends StatelessWidget {
   Future<void> logout(BuildContext context) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.clear();
-
-    Navigator.pushAndRemoveUntil(
-      context,
-      MaterialPageRoute(builder: (_) => const LoginPage()),
-      (route) => false,
-    );
+    if (!context.mounted) return;
+    Navigator.pushNamedAndRemoveUntil(context, '/login', (route) => false);
   }
 
   @override
@@ -36,6 +32,17 @@ class HomePage extends StatelessWidget {
               title: const Text("Dashboard"),
               onTap: () {
                 Navigator.pop(context);
+              },
+            ),
+            ListTile(
+              leading: const Icon(Icons.school),
+              title: const Text("Usuarios"),
+              onTap: () {
+                Navigator.pop(context); // cierra el drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (_) => const UsuariosPage()),
+                );
               },
             ),
             ListTile(
