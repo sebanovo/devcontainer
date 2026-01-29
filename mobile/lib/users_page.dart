@@ -26,7 +26,7 @@ class _UsuariosPageState extends State<UsuariosPage> {
     final subdomain = prefs.getString("subdomain");
 
     final url = Uri.parse(
-      "http://$subdomain.${Env.viteHost}:8000/api/v1/users/",
+      "http://$subdomain.${Env.serverHost}:8000/api/v1/users/",
     );
 
     final response = await http.get(url);

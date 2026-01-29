@@ -14,7 +14,7 @@ function UsersContent() {
     try {
       const subdomain = getSubdomain(window.location.hostname);
       const response = await fetch(
-        `http://${subdomain}.${Env.VITE_HOST}:8000/api/v1/tenant/users/`
+        `http://${subdomain}.${Env.VITE_SERVER_HOST}:8000/api/v1/tenant/users/`
       );
       const data = await response.json();
       setUsers(data);

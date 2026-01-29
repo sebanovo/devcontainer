@@ -14,7 +14,7 @@ function GroupsContent() {
     try {
       const subdomain = getSubdomain(window.location.hostname);
       const response = await fetch(
-        `http://${subdomain}.${Env.VITE_HOST}:8000/api/v1/tenant/groups/`
+        `http://${subdomain}.${Env.VITE_SERVER_HOST}:8000/api/v1/tenant/groups/`
       );
       const data = await response.json();
       setGroups(data);

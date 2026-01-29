@@ -25,7 +25,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future<void> fetchDomains() async {
-    final url = Uri.parse("http://${Env.viteHost}:8000/api/v1/domains/");
+    final url = Uri.parse("http://${Env.serverHost}:8000/api/v1/domains/");
     final response = await http.get(url);
 
     if (response.statusCode == 200) {
@@ -49,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
     if (selectedSubdomain == null) return;
 
     final url = Uri.parse(
-      "http://$selectedSubdomain.${Env.viteHost}:8000/api/token/",
+      "http://$selectedSubdomain.${Env.serverHost}:8000/api/token/",
     );
 
     final response = await http.post(

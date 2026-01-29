@@ -22,7 +22,7 @@ export default function CreateTenant() {
     };
 
     try {
-      const res = await fetch(`http://${Env.VITE_HOST}:8000/api/v1/register-tenant/`, {
+      const res = await fetch(`http://${Env.VITE_SERVER_HOST}:8000/api/v1/register-tenant/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload),
@@ -40,7 +40,7 @@ export default function CreateTenant() {
         setPassword('');
         // Redirigir al nuevo subdominio
         setTimeout(() => {
-          window.location.href = `http://${data.subdomain}.${Env.VITE_HOST}:5173/`;
+          window.location.href = `http://${data.subdomain}.${Env.VITE_SERVER_HOST}:5173/`;
         }, 2000);
       } else if (res.status === 400) {
         // Mostrar errores de validación del backend
@@ -109,7 +109,7 @@ export default function CreateTenant() {
                 title='Solo letras minúsculas, números y guiones'
               />
               <div className='flex min-w-[120px] items-center justify-center rounded-r-lg border border-l-0 border-gray-300 bg-gray-50 px-4 py-3 text-gray-600'>
-                .{Env.VITE_HOST}
+                .{Env.VITE_SERVER_HOST}
               </div>
             </div>
             <div className='mt-2 flex items-center text-sm text-gray-500'>
@@ -117,7 +117,7 @@ export default function CreateTenant() {
               <span>
                 Tu URL será:{' '}
                 <span className='font-mono font-medium'>
-                  http://{subdomain || 'tusubdominio'}.{Env.VITE_HOST}:5173
+                  http://{subdomain || 'tusubdominio'}.{Env.VITE_SERVER_HOST}:5173
                 </span>
               </span>
             </div>

@@ -27,7 +27,7 @@ function LoginPageTenant() {
 
     try {
       const subdomain = getSubdomain(window.location.hostname);
-      const response = await fetch(`http://${subdomain}.${Env.VITE_HOST}:8000/api/token/`, {
+      const response = await fetch(`http://${subdomain}.${Env.VITE_SERVER_HOST}:8000/api/token/`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

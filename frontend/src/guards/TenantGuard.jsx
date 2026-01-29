@@ -19,7 +19,7 @@ export default function TenantGuard({ children }) {
       }
 
       try {
-        const res = await fetch(`http://${Env.VITE_HOST}:8000/api/v1/domains`);
+        const res = await fetch(`http://${Env.VITE_SERVER_HOST}:8000/api/v1/domains`);
         const data = await res.json();
 
         const exists = data.some((d) => getSubdomain(d.domain) === subdomain);

@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: Env.viteSystemName,
+      title: Env.systemName,
       initialRoute: '/login',
       routes: {
         '/login': (_) => const LoginPage(),
