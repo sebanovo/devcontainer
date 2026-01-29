@@ -17,6 +17,12 @@ adb start-server
 - Prender el modo Depurar por USB (En el modo desarrollador del telefono)
 
 ```shell
+# Copiar los .env respectivo en cada uno 
+cp .devcontainer/.env.sample .devcontainer/.env &&
+cp backend/.env.sample backend/.env &&
+cp frontend/.env.sample frontend/.env &&
+cp mobile/.env.sample mobile/.env
+
 # para leventar el contenedor de produccion y construirlo
 docker compose up --build
 
