@@ -18,7 +18,7 @@ adb start-server
 
 ```shell
 # Copiar los .env respectivo en cada uno 
-cp .devcontainer/.env.sample .devcontainer/.env &&
+cp .env.sample .env &&
 cp backend/.env.sample backend/.env &&
 cp frontend/.env.sample frontend/.env &&
 cp mobile/.env.sample mobile/.env

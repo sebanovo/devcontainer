@@ -4,7 +4,7 @@ services:
       context: .
       dockerfile: ./Dockerfile.dev
     volumes:
-      - ..:/workspaces:cached
+      - .:/workspaces:cached
     command: 'sleep infinity'
     environment:
       - PYTHONDONTWRITEBYTECODE=1 # Evitar python .pyc
@@ -21,18 +21,12 @@ services:
     restart: unless-stopped
     volumes:
       - postgres-data:/var/lib/postgresql/data
-    environment:
+    ports:
+      - '5432:5432'
+    environment: 
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - '5432:5432'
-    healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB} || exit 1']
-
-      interval: 5s
-      timeout: 3s
-      retries: 20
 
 volumes:
   postgres-data:
