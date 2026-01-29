@@ -13,6 +13,7 @@ services:
 
     healthcheck:
       test: ['CMD-SHELL', 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB} || exit 1']
+
       interval: 5s
       timeout: 3s
       retries: 20
@@ -23,7 +24,7 @@ services:
     build:
       context: .
       dockerfile: ./backend/Dockerfile
-    env_file: .env
+    env_file: ./backend/.env
     volumes:
       # - ./backend:/app # Para sincronizar los archivos locales con los del contenedor
       - backend-media:/app/media
@@ -43,7 +44,7 @@ services:
     build:
       context: .
       dockerfile: ./frontend/Dockerfile
-    env_file: .env
+    env_file: ./frontend/.env
     depends_on:
       - backend
     working_dir: /app

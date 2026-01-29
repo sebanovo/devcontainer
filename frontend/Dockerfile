@@ -3,9 +3,6 @@ FROM node:20-bookworm
 # Copiar proyecto
 COPY ./frontend /app
 
-# Copiar variables de entorno
-COPY .env .env
-
 WORKDIR /app
 
 # Instalar dependencias

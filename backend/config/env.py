@@ -3,7 +3,7 @@ import environ
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 env = environ.Env(DEBUG=(bool, True))
-environ.Env.read_env(BASE_DIR.parent / ".env")
+environ.Env.read_env(BASE_DIR / ".env")
 
 
 # import os

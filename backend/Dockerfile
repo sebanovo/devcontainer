@@ -8,9 +8,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 # Copiar proyecto
 COPY ./backend /app
 
-# Copiar variables de entorno
-COPY .env .env
-
 WORKDIR /app
 
 RUN pip install --no-cache-dir -r ./requirements.txt

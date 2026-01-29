@@ -2,6 +2,16 @@
 
 set -e
 
+envFile=.env
+
+if [ ! -f $envFile ]; then
+  echo "Error: $envFile not found!"
+  exit 1
+fi
+
+source $envFile 
+echo "Archivo $envFile cargado con éxito"
+
 echo "Esperando a PostgreSQL en $POSTGRES_HOST:$POSTGRES_PORT..."
 until python ./scripts/test_conection_db.py; do
   echo "DB no disponible, reintentando..."
