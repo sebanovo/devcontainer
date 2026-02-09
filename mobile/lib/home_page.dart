@@ -54,8 +54,20 @@ class HomePage extends StatelessWidget {
         ),
       ),
 
-      body: const Center(
-        child: Text("Bienvenido al Dashboard", style: TextStyle(fontSize: 22)),
+      body: Column(
+        children: [
+          const Center(
+            child: Text(
+              "Bienvenido al Dashboard",
+              style: TextStyle(fontSize: 22),
+            ),
+          ),
+          Image.network(
+            'http://18.188.44.65:8000/static/mark.jpg',
+            width: 200,
+            height: 200,
+          ),
+        ],
       ),
     );
   }
