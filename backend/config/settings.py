@@ -13,10 +13,6 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 from .env import Env
 from pathlib import Path
 from datetime import timedelta
-from django.core.management.commands.runserver import Command as runserver
-
-# Cambiando el host a 0.0.0.0 para poder acceder desde afuera del contenedor
-runserver.default_addr = "0.0.0.0"
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 

@@ -1,5 +1,7 @@
 ```shell
-python manage.py runserver 0.0.0.0:8000 # Entrar a localhost:8000 o sino usar el 3000
+python manage.py runserver 0.0.0.0:8000 --nostatic # Entrar a localhost:8000 o sino usar el 3000 y compartir los archivos estaticos
+
+python manage.py run # hace todo lo del comando anterior 
 
 python manage.py makemigrations
 
@@ -46,6 +48,8 @@ python manage.py seed
 
 # porque --nostatic para poder servir los archivos estaticos sin usar wsgi o nginx
 python manage.py runserver 0.0.0.0:8000 --nostatic
+
+python manage.py run # hace todo lo del comando anterior
 ```
 
 ```bash 
