@@ -1,5 +1,3 @@
-import Env from '../constants/env';
-
 export function validateHost(hostname) {
   return (
     hostname.endsWith('.nip.io') ||

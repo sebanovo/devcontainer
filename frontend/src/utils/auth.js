@@ -37,13 +37,16 @@ export const refreshAccessToken = async () => {
 
   try {
     const subdomain = getSubdomain(window.location.hostname);
-    const response = await fetch(`http://${subdomain}.${Env.VITE_SERVER_HOST}:8000/api/token/refresh/`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ refresh: refreshToken }),
-    });
+    const response = await fetch(
+      `http://${subdomain}.${Env.VITE_SERVER_HOST}:8000/api/token/refresh/`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ refresh: refreshToken }),
+      }
+    );
 
     if (response.ok) {
       const data = await response.json();
